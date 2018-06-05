@@ -1,8 +1,9 @@
-package com.example.administrator.yikezhong.jokes;
+package com.example.administrator.yikezhong.home.presenter;
 
 import com.example.administrator.yikezhong.base.BasePresenter;
-import com.example.administrator.yikezhong.bean.JokesBean;
-import com.example.administrator.yikezhong.net.JokesApi;
+import com.example.administrator.yikezhong.bean.AdBean;
+import com.example.administrator.yikezhong.home.contract.HomPageContract;
+import com.example.administrator.yikezhong.net.AdApi;
 
 import javax.inject.Inject;
 
@@ -11,27 +12,30 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class JokesPresenter extends BasePresenter<JokesContract.View> implements JokesContract.presenter {
-    private JokesApi jokesApi;
+public class HomePagePresenter extends BasePresenter<HomPageContract.View> implements HomPageContract.Presenter {
+    private AdApi adApi;
+
     @Inject
-    public JokesPresenter(JokesApi jokesApi) {
-        this.jokesApi=jokesApi;
+    public HomePagePresenter(AdApi adApi) {
+        this.adApi = adApi;
     }
 
     @Override
-    public void getJokes(String page) {
-        jokesApi.getJokes(page)
+    public void getAd() {
+        adApi.getAd()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Observer<JokesBean>() {
+                .subscribe(new Observer<AdBean>() {
                     @Override
                     public void onSubscribe(Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(JokesBean jokesBean) {
-                        mView.jokesSuccess(jokesBean);
+                    public void onNext(AdBean adBean) {
+                        if (mView != null) {
+                            mView.getAdSuccess(adBean);
+                        }
                     }
 
                     @Override

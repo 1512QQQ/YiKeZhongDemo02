@@ -2,6 +2,8 @@ package com.example.administrator.yikezhong.module;
 
 import com.example.administrator.yikezhong.component.MyInterceptor;
 import com.example.administrator.yikezhong.net.API;
+import com.example.administrator.yikezhong.net.AdApi;
+import com.example.administrator.yikezhong.net.AdApiService;
 import com.example.administrator.yikezhong.net.JokesApi;
 import com.example.administrator.yikezhong.net.JokesApiService;
 
@@ -35,5 +37,17 @@ public class HttpModule {
                 .build();
         JokesApiService jokesApiService = retrofit.create(JokesApiService.class);
         return JokesApi.getJokesApi(jokesApiService);
+    }
+
+    @Provides
+    AdApi provideAdApi(OkHttpClient.Builder builder) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(API.BASEURL)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(builder.build())
+                .build();
+        AdApiService adApiService = retrofit.create(AdApiService.class);
+        return AdApi.getAdApi(adApiService);
     }
 }

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:background="#03A9F4"
+       >
+
+       <com.facebook.drawee.view.SimpleDraweeView
+           android:id="@+id/img01"
+           android:layout_width="50dp"
+           android:layout_height="50dp"
+           android:src="@drawable/ic_launcher_background"
+           />
+
+       <TextView
+           android:id="@+id/text01"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="推荐"
+           android:textSize="30sp"
+           android:gravity="center"
+           android:layout_toRightOf="@id/img01"
+           />
+
+       <com.facebook.drawee.view.SimpleDraweeView
+           android:id="@+id/img02"
+           android:layout_width="50dp"
+           android:layout_height="50dp"
+           android:layout_alignParentRight="true"
+           android:src="@drawable/ic_launcher_background"
+           />
+
+
+   </RelativeLayout>
+
+    <com.youth.banner.Banner
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"></com.youth.banner.Banner>
+
+
+</LinearLayout>
