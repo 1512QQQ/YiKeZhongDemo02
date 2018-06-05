@@ -12,35 +12,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#03A9F4">
 
-                <com.facebook.drawee.view.SimpleDraweeView
-                    android:id="@+id/img01"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/ic_launcher_background" />
-
-                <TextView
-                    android:id="@+id/text01"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/img01"
-                    android:gravity="center"
-                    android:text="推荐"
-                    android:textSize="30sp" />
-
-                <com.facebook.drawee.view.SimpleDraweeView
-                    android:id="@+id/img02"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_alignParentRight="true"
-                    android:src="@drawable/ic_launcher_background" />
-
-
-            </RelativeLayout>
 
             <android.support.design.widget.TabLayout
                 android:id="@+id/tab_layout"
