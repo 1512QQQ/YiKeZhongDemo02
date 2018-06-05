@@ -1,4 +1,4 @@
-package com.example.administrator.yikezhong.adapter;
+package com.example.administrator.yikezhong.home.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.example.administrator.yikezhong.R;
 import com.example.administrator.yikezhong.bean.JokesBean;
@@ -38,12 +39,12 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ViewHolder viewHolder = (ViewHolder) holder;
         JokesBean.DataBean dataBean = data.get(position);
-//        viewHolder.ivimg.setImageURI(dataBean.getImgUrls());
-//        //  viewHolder.img.setImageURI(dataBean.getImgUrls());
-//
-//        viewHolder.tvname.setText(dataBean.getUser().getNickname());
-//        viewHolder.tvtime.setText(dataBean.getCreateTime());
-//        viewHolder.tvtitle.setText(dataBean.getContent());
+         viewHolder.img01.setImageURI(dataBean.getUser().getIcon());
+      viewHolder.text01.setText(dataBean.getUser().getNickname());
+       viewHolder.text02.setText(dataBean.getCreateTime());
+        viewHolder.text03.setText(dataBean.getUser().getNickname());
+
+
     }
 
     @Override
@@ -52,17 +53,19 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
     class ViewHolder extends RecyclerView.ViewHolder{
 
-//        private final TextView tvname;
-//        private final TextView tvtime;
-//        private final TextView tvtitle;
-//        private final SimpleDraweeView ivimg;
+     private final TextView text01;
+      private final TextView text02;
+      private final TextView text03;
+       private final SimpleDraweeView img01;
+        private final VideoView video;
 
         public ViewHolder(View itemView) {
             super(itemView);
-//            tvname = itemView.findViewById(R.id.tvname);
-//            tvtime = itemView.findViewById(R.id.tvtime);
-//            tvtitle = itemView.findViewById(R.id.tvtitle);
-//            ivimg = itemView.findViewById(R.id.ivimg);
+            text01 = itemView.findViewById(R.id.text01);
+            text02 = itemView.findViewById(R.id.text02);
+            text03 = itemView.findViewById(R.id.text03);
+           img01 = itemView.findViewById(R.id.img01);
+            video = itemView.findViewById(R.id.video);
 
         }
     }

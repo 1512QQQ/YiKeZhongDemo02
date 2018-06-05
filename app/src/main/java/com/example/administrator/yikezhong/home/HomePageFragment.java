@@ -6,6 +6,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +20,9 @@ import com.example.administrator.yikezhong.R;
 import com.example.administrator.yikezhong.base.BaseActivity;
 import com.example.administrator.yikezhong.base.BaseFragment;
 import com.example.administrator.yikezhong.bean.AdBean;
+import com.example.administrator.yikezhong.bean.JokesBean;
 import com.example.administrator.yikezhong.component.DaggerHttpComponent;
+import com.example.administrator.yikezhong.home.adapter.RvAdapter;
 import com.example.administrator.yikezhong.home.contract.HomPageContract;
 import com.example.administrator.yikezhong.home.presenter.HomePagePresenter;
 import com.example.administrator.yikezhong.module.HttpModule;
@@ -41,6 +45,7 @@ public class HomePageFragment extends BaseFragment<HomePagePresenter> implements
 
 
     private Banner banner;
+    private RecyclerView rcv;
 
     @Override
     public int getContentLayout() {
@@ -60,10 +65,14 @@ public class HomePageFragment extends BaseFragment<HomePagePresenter> implements
     @Override
     public void initView(View view) {
         banner = view.findViewById(R.id.banner);
+        rcv = view.findViewById(R.id.rcv);
+        rcv.setLayoutManager(new LinearLayoutManager(getContext()));
         //设置图片加载器
         banner.setImageLoader(new GlideImageLoader());
 
         mPresenter.getAd();
+
+        mPresenter.getJokes("6");
     }
 
     @Override
@@ -77,6 +86,16 @@ public class HomePageFragment extends BaseFragment<HomePagePresenter> implements
         banner.setImages(images);
         //banner设置方法全部调用完毕时最后调用
         banner.start();
+
+    }
+
+    @Override
+    public void jokesSuccess(JokesBean jokesBean) {
+       final List<JokesBean.DataBean> data = jokesBean.getData();
+
+        final RvAdapter rvAdapter = new RvAdapter(data, getContext());
+
+        rcv.setAdapter(rvAdapter);
 
     }
 
