@@ -10,6 +10,7 @@ import android.widget.RadioGroup;
 
 import com.example.administrator.yikezhong.base.BaseActivity;
 import com.example.administrator.yikezhong.home.HomePageFragment;
+import com.example.administrator.yikezhong.home.LeftFragment;
 import com.example.administrator.yikezhong.my.MyFragment;
 import com.example.administrator.yikezhong.net.API;
 import com.example.administrator.yikezhong.slass.ClassifyFragment;
@@ -32,10 +33,10 @@ public class MainActivity extends BaseActivity {
     private RadioGroup mRg;
     private FrameLayout mFlContent;
     private FragmentManager fragmentManager;
-    private HomePageFragment homePageFragment;
     private MyFragment myFragment;
     private int currentIndex = 1;
     private ClassifyFragment classifyFragment;
+    private LeftFragment leftFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,11 +59,11 @@ public class MainActivity extends BaseActivity {
 
 
         fragmentManager = getSupportFragmentManager();
-        homePageFragment = new HomePageFragment();
+        leftFragment = new LeftFragment();
         classifyFragment = new ClassifyFragment();
         myFragment = new MyFragment();
         fragmentManager.beginTransaction()
-                .replace(R.id.flContent, homePageFragment)
+                .replace(R.id.flContent, leftFragment)
                 .commit();
         mRbHomepage.setChecked(true);
         //设置点击事件
@@ -80,7 +81,7 @@ public class MainActivity extends BaseActivity {
                             return;
                         }
                         currentIndex = 1;
-                        fragmentManager.beginTransaction().replace(R.id.flContent, homePageFragment).commit();
+                        fragmentManager.beginTransaction().replace(R.id.flContent, leftFragment).commit();
                         break;
                     case R.id.rbClass:
                         if (currentIndex == 2) {
