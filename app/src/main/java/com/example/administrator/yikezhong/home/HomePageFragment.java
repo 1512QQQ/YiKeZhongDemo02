@@ -45,6 +45,7 @@ public class HomePageFragment extends BaseFragment<HomePagePresenter> implements
     @Override
     public int getContentLayout() {
         return R.layout.home_fragment;
+        //sasjsajkkjs
     }
 
     @Override
