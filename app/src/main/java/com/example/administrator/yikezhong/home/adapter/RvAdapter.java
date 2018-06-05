@@ -1,6 +1,7 @@
 package com.example.administrator.yikezhong.home.adapter;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,8 +44,10 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
       viewHolder.text01.setText(dataBean.getUser().getNickname());
        viewHolder.text02.setText(dataBean.getCreateTime());
         viewHolder.text03.setText(dataBean.getUser().getNickname());
-
-
+        String url = dataBean.getVideoUrl();
+        if(url!=null) {
+            viewHolder.video.setVideoURI(Uri.parse(url));
+        }
     }
 
     @Override

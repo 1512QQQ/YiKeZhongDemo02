@@ -24,6 +24,7 @@ public class LeftFragment  extends Fragment {
     private List<String> myTabs=new ArrayList<>();
     private List<Fragment> list_frag;
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

@@ -18,7 +18,7 @@ public class MyInterceptor implements Interceptor {
             HttpUrl httpUrl = originRequest.url()
                     .newBuilder()
                     .addQueryParameter("source", "android")
-                    .addQueryParameter("appVersion","101")
+                    .addQueryParameter("appVersion","100")
                     .build();
             Request request = new Request.Builder().url(httpUrl).build();
             //发送请求
