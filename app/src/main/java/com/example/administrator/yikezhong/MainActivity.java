@@ -3,7 +3,9 @@ package com.example.administrator.yikezhong;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -21,6 +23,7 @@ import com.example.administrator.yikezhong.my.MyFragment;
 import com.example.administrator.yikezhong.net.API;
 import com.example.administrator.yikezhong.slass.ClassifyFragment;
 import com.example.administrator.yikezhong.slass.leftactivity.HeadPic;
+import com.example.administrator.yikezhong.utils.BottomBar;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
@@ -64,6 +67,7 @@ public class MainActivity extends BaseActivity {
     SimpleDraweeView touxiang;
     private SimpleDraweeView touxiang1;
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,19 +88,28 @@ public class MainActivity extends BaseActivity {
 
             }
         });
-        initView();
+
+        mFlContent = (FrameLayout) findViewById(R.id.fl_container);
+        BottomBar bottomBar = findViewById(R.id.bottom_bar);
+        bottomBar.setContainer(R.id.fl_container)
+                .setTitleBeforeAndAfterColor("#999999", "#ff5d5e")
+                .addItem(LeftFragment.class,
+                        "推荐",
+                        R.drawable.tuijian1,
+                        R.drawable.tuijian2)
+                .addItem(ClassifyFragment.class,
+                        "段子",
+                        R.drawable.duanzi1,
+                        R.drawable.duanzi2)
+                .addItem(MyFragment.class,
+                        "视频",
+                        R.drawable.shipin1,
+                        R.drawable.shipin2)
+                .build();
 
 
-        fragmentManager = getSupportFragmentManager();
-        leftFragment = new LeftFragment();
-        classifyFragment = new ClassifyFragment();
-        myFragment = new MyFragment();
-        fragmentManager.beginTransaction()
-                .replace(R.id.flContent, leftFragment)
-                .commit();
-        mRbHomepage.setChecked(true);
-        //设置点击事件
-        setLisenter();
+
+
 
     }
 
@@ -151,50 +164,10 @@ public class MainActivity extends BaseActivity {
     }
 
 
-    private void setLisenter() {
-        mRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId) {
-                    case R.id.rbHomepage:
-                        //首页
-                        if (currentIndex == 1) {
-                            return;
-                        }
-                        currentIndex = 1;
-                        fragmentManager.beginTransaction().replace(R.id.flContent, leftFragment).commit();
-                        break;
-                    case R.id.rbClass:
-                        if (currentIndex == 2) {
-                            return;
-                        }
-                        currentIndex = 2;
-                        fragmentManager.beginTransaction().replace(R.id.flContent, classifyFragment).commit();
-                        break;
-                    case R.id.rbFind:
-                        if (currentIndex == 3) {
-                            return;
-                        }
-                        currentIndex = 3;
-                        fragmentManager.beginTransaction().replace(R.id.flContent, myFragment).commit();
-                       break;
 
 
-                }
-            }
-        });
-    }
 
 
-    private void initView() {
-        mFl = (FrameLayout) findViewById(R.id.flContent);
-        mRbHomepage = (RadioButton) findViewById(R.id.rbHomepage);
-        mRbClass = (RadioButton) findViewById(R.id.rbClass);
-        mRbFind = (RadioButton) findViewById(R.id.rbFind);
-
-        mRg = (RadioGroup) findViewById(R.id.rg);
-        mFlContent = (FrameLayout) findViewById(R.id.flContent);
-    }
 
     @Override
     public int getContentLayout() {
