@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".my.VideoActivity">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+
+    android:layout_height="wrap_content">
+    <ImageView
+        android:background="@drawable/umeng_socialize_back_icon"
+        android:layout_width="20dp"
+        android:layout_height="20dp" />
+
+    <ImageView
+        android:background="@drawable/xin1"
+        android:layout_marginLeft="10dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp" />
+
+    <ImageView
+        android:layout_marginLeft="10dp"
+        android:layout_width="30dp"
+        android:background="@drawable/xin2"
+        android:layout_height="30dp" />
+
+    <ImageView
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/raw_1499995160"
+        android:layout_width="30dp"
+        android:layout_height="30dp" />
+
+    <ImageView
+        android:layout_marginLeft="10dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp" />
+
+</LinearLayout>
+    <fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard
+        android:id="@+id/videoplayer"
+        android:layout_width="match_parent"
+        android:layout_height="270dp" />
+
+   <TextView
+       android:id="@+id/text1"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="10dp"
+       android:text="女子翻窗裤子被挂在窗户，路人围观"/>
+
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="15963万次播放  今天19:23"/>
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/raw_1500033586"
+        android:layout_gravity="center"
+
+        android:layout_width="200dp"
+        android:layout_height="200dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="拿起手机速度抢个沙发吧"
+        android:layout_gravity="center"
+        android:textSize="30dp"
+        />
+
+</LinearLayout>

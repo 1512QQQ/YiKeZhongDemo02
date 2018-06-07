@@ -26,9 +26,7 @@ import com.example.administrator.yikezhong.home.adapter.RvAdapter;
 import com.example.administrator.yikezhong.home.contract.HomPageContract;
 import com.example.administrator.yikezhong.home.presenter.HomePagePresenter;
 import com.example.administrator.yikezhong.module.HttpModule;
-import com.example.administrator.yikezhong.my.MyFragment;
-import com.example.administrator.yikezhong.net.API;
-import com.example.administrator.yikezhong.slass.ClassifyFragment;
+
 import com.youth.banner.Banner;
 
 import java.io.IOException;
