@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="4"
-        android:background="#d2a0df"
+        android:background="@drawable/color5"
         android:orientation="vertical">
 
         <LinearLayout
@@ -54,7 +54,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_weight="4.8"
+        android:layout_weight="5.3"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="#ffffff"
@@ -65,7 +65,7 @@
             android:id="@+id/takecare"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="25dp"
             android:drawableLeft="@drawable/my_takecare"
             android:drawableRight="@drawable/sliding_xiangyoua"
             android:text="    我的关注                              "
@@ -76,8 +76,9 @@
             android:id="@+id/collection"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="25dp"
             android:drawableLeft="@drawable/my_collection"
+            android:drawableRight="@drawable/sliding_xiangyoua"
             android:text="    我的收藏                              "
             android:textColor="#383838"
             android:textSize="18sp" />
@@ -86,7 +87,8 @@
             android:id="@+id/friend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="25dp"
+            android:drawableRight="@drawable/sliding_xiangyoua"
             android:drawableLeft="@drawable/search_friend"
             android:text="    搜索好友                              "
             android:textColor="#383838"
@@ -96,8 +98,9 @@
             android:id="@+id/messages"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="25dp"
             android:drawableLeft="@drawable/messages"
+            android:drawableRight="@drawable/sliding_xiangyoua"
             android:text="    消息通知                              "
             android:textColor="#383838"
             android:textSize="18sp" />

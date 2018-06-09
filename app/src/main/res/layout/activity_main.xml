@@ -9,9 +9,8 @@
     tools:context=".MainActivity">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="70dp"
         android:background="#03A9F4">
-
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:layout_centerVertical="true"

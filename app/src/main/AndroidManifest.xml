@@ -26,7 +26,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".slass.leftactivity.HeadPic" />
-        <activity android:name=".my.VideoActivity"></activity>
+        <activity android:name=".my.VideoActivity" />
+        <activity android:name=".slass.leftactivity.Head_login" />
+        <activity android:name=".slass.leftactivity.Head_white"></activity>
     </application>
 
 </manifest>
