@@ -1,45 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".my.VideoActivity">
-<LinearLayout
+<RelativeLayout
     android:layout_width="match_parent"
-    android:orientation="horizontal"
-
     android:layout_height="wrap_content">
     <ImageView
-        android:background="@drawable/umeng_socialize_back_icon"
+        android:id="@+id/img03"
+        android:background="@drawable/leftjiantou"
         android:layout_width="20dp"
         android:layout_height="20dp" />
 
     <ImageView
-        android:background="@drawable/xin1"
+        android:background="@drawable/xin"
+        android:id="@+id/img01"
+        android:layout_toRightOf="@id/img03"
         android:layout_marginLeft="10dp"
         android:layout_width="30dp"
         android:layout_height="30dp" />
 
     <ImageView
         android:layout_marginLeft="10dp"
+        android:id="@+id/img02"
+        android:layout_toRightOf="@id/img01"
+
         android:layout_width="30dp"
-        android:background="@drawable/xin2"
+        android:background="@drawable/lie"
         android:layout_height="30dp" />
 
     <ImageView
         android:layout_marginLeft="10dp"
+        android:id="@+id/img05"
+        android:layout_toRightOf="@id/img02"
+
         android:background="@drawable/raw_1499995160"
         android:layout_width="30dp"
         android:layout_height="30dp" />
 
-    <ImageView
-        android:layout_marginLeft="10dp"
+    <com.facebook.drawee.view.SimpleDraweeView
+        fresco:roundAsCircle="true"
+        android:layout_marginLeft="250dp"
+        android:layout_alignParentRight="true"
+        android:id="@+id/img04"
         android:layout_width="30dp"
         android:layout_height="30dp" />
 
-</LinearLayout>
+</RelativeLayout>
     <fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard
         android:id="@+id/videoplayer"
         android:layout_width="match_parent"

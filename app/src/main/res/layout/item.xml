@@ -44,6 +44,8 @@
            />
 
 
+
+
     </RelativeLayout>
 
     <TextView
@@ -52,10 +54,58 @@
         android:layout_height="wrap_content"
         android:text="123"
         />
-
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="270dp">
     <fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard
         android:id="@+id/videoplayer"
         android:layout_width="match_parent"
         android:layout_height="270dp" />
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="30dp"
+    android:layout_marginTop="80dp"
+    android:layout_alignParentRight="true"
+    android:layout_height="200dp">
+
+  <ImageView
+      android:id="@+id/tu1"
+      android:layout_width="30dp"
+      android:layout_height="30dp"
+      android:src="@drawable/xin"
+      android:visibility="gone"
+      />
+
+
+
+        <ImageView
+            android:id="@+id/tu2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/raw_1500083878"
+            android:visibility="gone"
+
+            />
+
+    <ImageView
+        android:id="@+id/tu3"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/raw_1499995160"
+        android:visibility="gone"
+
+        />
+    <ImageView
+        android:id="@+id/tu4"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/raw_1499995160"
+        android:visibility="gone"
+
+        />
+
+</LinearLayout>
+
+</RelativeLayout>
 
    </LinearLayout>

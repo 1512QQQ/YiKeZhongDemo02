@@ -4,8 +4,10 @@ import android.content.Context;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -25,6 +27,7 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context context;
     private final LayoutInflater inflater;
 
+
     public RvAdapter(List<JokesBean.DataBean> data, Context context) {
         this.data = data;
         this.context = context;
@@ -41,7 +44,7 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        ViewHolder viewHolder = (ViewHolder) holder;
+        final ViewHolder viewHolder = (ViewHolder) holder;
         JokesBean.DataBean dataBean = data.get(position);
          viewHolder.img01.setImageURI(dataBean.getUser().getIcon());
       viewHolder.text01.setText(dataBean.getUser().getNickname());
@@ -54,6 +57,56 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 , JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, "嫂子闭眼睛");
         Glide.with(context).load("http://p.qpic.cn/videoyun/0/2449_43b6f696980311e59ed467f22794e792_1/640")
                 .into(viewHolder.jcVideoPlayerStandard.thumbImageView);
+        viewHolder.jcVideoPlayerStandard.setTag(1);
+        viewHolder.jcVideoPlayerStandard.thumbImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int tag = (int) viewHolder.jcVideoPlayerStandard.getTag();
+                if (tag==1){
+                viewHolder.tu1.setVisibility(View.VISIBLE);
+                viewHolder.tu2.setVisibility(View.VISIBLE);
+                viewHolder.tu3.setVisibility(View.VISIBLE);
+                viewHolder.tu4.setVisibility(View.VISIBLE);
+                    viewHolder.jcVideoPlayerStandard.setTag(2);
+                }else {
+                    viewHolder.tu1.setVisibility(View.GONE);
+                    viewHolder.tu2.setVisibility(View.GONE);
+                    viewHolder.tu3.setVisibility(View.GONE);
+                    viewHolder.tu4.setVisibility(View.GONE);
+                    viewHolder.jcVideoPlayerStandard.setTag(1);
+
+
+                }
+            }
+        });
+        viewHolder.tu1.setTag(1);
+        viewHolder.tu1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int tag1 = (int) viewHolder.tu1.getTag();
+                if (tag1==1) {
+                    viewHolder.tu1.setBackgroundResource(R.drawable.t1);
+                    viewHolder.tu1.setTag(2);
+                }else {
+                    viewHolder.tu1.setBackgroundResource(R.drawable.xin);
+                    viewHolder.tu1.setTag(1);
+                }
+            }
+        });
+        viewHolder.tu2.setTag(1);
+        viewHolder.tu2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int tag2 = (int) viewHolder.tu2.getTag();
+                if (tag2==1) {
+                    viewHolder.tu2.setBackgroundResource(R.drawable.raw_1499947358);
+                    viewHolder.tu2.setTag(2);
+                }else {
+                    viewHolder.tu2.setBackgroundResource(R.drawable.raw_1500083878);
+                    viewHolder.tu2.setTag(1);
+                }
+            }
+        });
 
 
 
@@ -71,6 +124,11 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
       private final TextView text03;
        private final SimpleDraweeView img01;
         private final JCVideoPlayerStandard jcVideoPlayerStandard;
+        private final ImageView tu1;
+        private final ImageView tu2;
+        private final ImageView tu3;
+        private final ImageView tu4;
+
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -79,6 +137,11 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             text03 = itemView.findViewById(R.id.text03);
            img01 = itemView.findViewById(R.id.img01);
            jcVideoPlayerStandard = (JCVideoPlayerStandard) itemView.findViewById(R.id.videoplayer);
+            tu1 = itemView.findViewById(R.id.tu1);
+           tu2 = itemView.findViewById(R.id.tu2);
+            tu3 = itemView.findViewById(R.id.tu3);
+            tu4 = itemView.findViewById(R.id.tu4);
+
 
         }
     }
