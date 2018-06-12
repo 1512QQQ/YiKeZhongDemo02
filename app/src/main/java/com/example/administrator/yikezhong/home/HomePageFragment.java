@@ -14,12 +14,14 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.example.administrator.yikezhong.GlideImageLoader;
 import com.example.administrator.yikezhong.R;
 import com.example.administrator.yikezhong.base.BaseActivity;
 import com.example.administrator.yikezhong.base.BaseFragment;
 import com.example.administrator.yikezhong.bean.AdBean;
+import com.example.administrator.yikezhong.bean.AddFavoriteBean;
 import com.example.administrator.yikezhong.bean.JokesBean;
 import com.example.administrator.yikezhong.component.DaggerHttpComponent;
 import com.example.administrator.yikezhong.home.adapter.RvAdapter;
@@ -91,10 +93,15 @@ public class HomePageFragment extends BaseFragment<HomePagePresenter> implements
     public void jokesSuccess(JokesBean jokesBean) {
        final List<JokesBean.DataBean> data = jokesBean.getData();
 
-        final RvAdapter rvAdapter = new RvAdapter(data, getContext());
+        final RvAdapter rvAdapter = new RvAdapter(data, getContext(),mPresenter);
 
         rcv.setAdapter(rvAdapter);
 
+    }
+
+    @Override
+    public void addfavoriteSuccess(String str) {
+        Toast.makeText(getContext(), str, Toast.LENGTH_LONG).show();
     }
 
     @Override

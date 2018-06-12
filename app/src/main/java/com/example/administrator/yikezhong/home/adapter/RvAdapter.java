@@ -9,11 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.bumptech.glide.Glide;
 import com.example.administrator.yikezhong.R;
 import com.example.administrator.yikezhong.bean.JokesBean;
+import com.example.administrator.yikezhong.home.presenter.HomePagePresenter;
+import com.example.administrator.yikezhong.utils.SharedPreferencesUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
@@ -26,13 +29,21 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<JokesBean.DataBean> data;
     private Context context;
     private final LayoutInflater inflater;
+    private HomePagePresenter homePagePresenter;
+    private final String uid;
+    private final String token;
 
 
-    public RvAdapter(List<JokesBean.DataBean> data, Context context) {
+    public RvAdapter(List<JokesBean.DataBean> data, Context context,HomePagePresenter homePagePresenter) {
         this.data = data;
         this.context = context;
+        this.homePagePresenter=homePagePresenter;
         inflater = LayoutInflater.from(context);
+        uid = (String) SharedPreferencesUtils.getParam(context, "uid", "13842");
+        token = (String) SharedPreferencesUtils.getParam(context, "tonken", "B418A52FCD7198F21D19CB63011CE354");
     }
+
+
 
     @NonNull
     @Override
@@ -45,7 +56,7 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         final ViewHolder viewHolder = (ViewHolder) holder;
-        JokesBean.DataBean dataBean = data.get(position);
+        final JokesBean.DataBean dataBean = data.get(position);
          viewHolder.img01.setImageURI(dataBean.getUser().getIcon());
       viewHolder.text01.setText(dataBean.getUser().getNickname());
        viewHolder.text02.setText(dataBean.getCreateTime());
@@ -99,7 +110,9 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             public void onClick(View v) {
                 int tag2 = (int) viewHolder.tu2.getTag();
                 if (tag2==1) {
+                    int wid = dataBean.getWid();
                     viewHolder.tu2.setBackgroundResource(R.drawable.raw_1499947358);
+                    homePagePresenter.getaddfavorit(token, uid,wid+"");
                     viewHolder.tu2.setTag(2);
                 }else {
                     viewHolder.tu2.setBackgroundResource(R.drawable.raw_1500083878);
@@ -112,6 +125,8 @@ public class RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 
     }
+
+
 
     @Override
     public int getItemCount() {

@@ -15,6 +15,7 @@ import com.example.administrator.yikezhong.GlideImageLoader;
 import com.example.administrator.yikezhong.R;
 import com.example.administrator.yikezhong.base.BaseFragment;
 import com.example.administrator.yikezhong.bean.AdBean;
+import com.example.administrator.yikezhong.bean.AddFavoriteBean;
 import com.example.administrator.yikezhong.bean.JokesBean;
 import com.example.administrator.yikezhong.component.DaggerHttpComponent;
 import com.example.administrator.yikezhong.home.adapter.RvAdapter;
@@ -68,9 +69,14 @@ public class RightFragment extends BaseFragment<HomePagePresenter> implements Ho
     public void jokesSuccess(JokesBean jokesBean) {
         final List<JokesBean.DataBean> data = jokesBean.getData();
 
-        final RvAdapter rvAdapter = new RvAdapter(data, getContext());
+        final RvAdapter rvAdapter = new RvAdapter(data, getContext(),mPresenter);
 
         rcv.setAdapter(rvAdapter);
+
+    }
+
+    @Override
+    public void addfavoriteSuccess(String str) {
 
     }
 

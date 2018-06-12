@@ -50,5 +50,11 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
     implementation project(':library')
     implementation 'fm.jiecao:jiecaovideoplayer:5.5'
-
+    implementation files('lib/umeng-common-1.5.3.jar')
+    implementation files('lib/umeng-share-core-6.9.2.jar')
+    implementation files('lib/umeng-share-QQ-simplify-6.9.2.jar')
+    implementation files('lib/umeng-share-sina-simplify-6.9.2.jar')
+    implementation files('lib/umeng-share-wechat-simplify-6.9.2.jar')
+    implementation files('lib/umeng-shareboard-widget-6.9.2.jar')
+    implementation files('lib/umeng-sharetool-6.9.2.jar')
 }

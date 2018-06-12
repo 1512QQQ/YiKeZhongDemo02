@@ -7,10 +7,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.administrator.yikezhong.MainActivity;
 import com.example.administrator.yikezhong.R;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.umeng.socialize.ShareAction;
+import com.umeng.socialize.UMShareAPI;
+import com.umeng.socialize.UMShareListener;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.editorpage.ShareActivity;
+import com.umeng.socialize.media.UMWeb;
 
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 
@@ -25,6 +33,7 @@ public class VideoActivity extends AppCompatActivity implements View.OnClickList
     private int tag2;
     private ImageView mImg03;
     private SimpleDraweeView mImg04;
+    private ImageView mImg05;
     /**
      * 15963万次播放  今天19:23
      */
@@ -35,6 +44,7 @@ public class VideoActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
+
         initView();
 
         Intent intent = getIntent();
@@ -57,6 +67,12 @@ public class VideoActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
+    }
+
     private void initView() {
         img01 = findViewById(R.id.img01);
         img02 = findViewById(R.id.img02);
@@ -68,6 +84,9 @@ public class VideoActivity extends AppCompatActivity implements View.OnClickList
         mImg04.setOnClickListener(this);
         mText2 = (TextView) findViewById(R.id.text2);
         mImg = (ImageView) findViewById(R.id.img);
+
+        mImg05 = (ImageView) findViewById(R.id.img05);
+        mImg05.setOnClickListener(this);
     }
 
     @Override
@@ -77,7 +96,7 @@ public class VideoActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.img01:
                 tag1 = (int) img01.getTag();
-                if (tag2 == 1) {
+                if (tag2 == 2) {
                     return;
                 } else {
                     if (tag1 == 1) {
@@ -91,7 +110,7 @@ public class VideoActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.img02:
                 tag2 = (int) img02.getTag();
-                if (tag1 == 1) {
+                if (tag1 == 2) {
                     return;
                 } else {
                     if (tag2 == 1) {
@@ -109,6 +128,52 @@ public class VideoActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.img04:
                 break;
+
+            case R.id.img05:
+                UMWeb url = new UMWeb("https://123.sogou.com/?71175-1172");
+                new ShareAction(VideoActivity.this).withMedia(url).setDisplayList(SHARE_MEDIA.SINA,SHARE_MEDIA.QQ,SHARE_MEDIA.WEIXIN,SHARE_MEDIA.QZONE)
+                        .setCallback(shareListener).open();
+                break;
         }
     }
+
+    private UMShareListener shareListener = new UMShareListener() {
+        /**
+         * @descrption 分享开始的回调
+         * @param platform 平台类型
+         */
+        @Override
+        public void onStart(SHARE_MEDIA platform) {
+
+        }
+
+        /**
+         * @descrption 分享成功的回调
+         * @param platform 平台类型
+         */
+        @Override
+        public void onResult(SHARE_MEDIA platform) {
+            Toast.makeText(VideoActivity.this,"成功                                        了",Toast.LENGTH_LONG).show();
+        }
+
+        /**
+         * @descrption 分享失败的回调
+         * @param platform 平台类型
+         * @param t 错误原因
+         */
+        @Override
+        public void onError(SHARE_MEDIA platform, Throwable t) {
+            Toast.makeText(VideoActivity.this,"失                                            败"+t.getMessage(),Toast.LENGTH_LONG).show();
+        }
+
+        /**
+         * @descrption 分享取消的回调
+         * @param platform 平台类型
+         */
+        @Override
+        public void onCancel(SHARE_MEDIA platform) {
+            Toast.makeText(VideoActivity.this,"取消                                          了",Toast.LENGTH_LONG).show();
+
+        }
+    };
 }

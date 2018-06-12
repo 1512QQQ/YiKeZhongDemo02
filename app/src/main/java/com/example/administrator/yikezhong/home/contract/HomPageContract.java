@@ -2,6 +2,7 @@ package com.example.administrator.yikezhong.home.contract;
 
 import com.example.administrator.yikezhong.base.BaseContract;
 import com.example.administrator.yikezhong.bean.AdBean;
+import com.example.administrator.yikezhong.bean.AddFavoriteBean;
 import com.example.administrator.yikezhong.bean.JokesBean;
 
 public interface HomPageContract {
@@ -9,6 +10,8 @@ public interface HomPageContract {
         void getAdSuccess(AdBean adBean);
 
         void jokesSuccess(JokesBean jokesBean);
+
+        void addfavoriteSuccess(String str);
 
 
 
@@ -19,7 +22,7 @@ public interface HomPageContract {
 
         void getJokes(String page);
 
-
+        void getaddfavorit(String token,String uid,String wid);
 
     }
 }

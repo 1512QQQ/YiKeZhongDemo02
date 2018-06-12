@@ -4,6 +4,8 @@ import com.example.administrator.yikezhong.component.MyInterceptor;
 import com.example.administrator.yikezhong.net.API;
 import com.example.administrator.yikezhong.net.AdApi;
 import com.example.administrator.yikezhong.net.AdApiService;
+import com.example.administrator.yikezhong.net.AddFavoriteApi;
+import com.example.administrator.yikezhong.net.AddFavoriteApiService;
 import com.example.administrator.yikezhong.net.JokesApi;
 import com.example.administrator.yikezhong.net.JokesApiService;
 import com.example.administrator.yikezhong.net.VideosApi;
@@ -64,5 +66,18 @@ public class HttpModule {
                 .build();
         VideosApiService videosApiService = retrofit.create(VideosApiService.class);
         return VideosApi.getVideosApi(videosApiService);
+    }
+
+    @Provides
+    AddFavoriteApi provideAddFavoriteApi(OkHttpClient.Builder builder){
+
+        builder.addInterceptor(new MyInterceptor());
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(API.BASEURL)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(builder.build())
+                .build();
+        AddFavoriteApiService addFavoriteApiService = retrofit.create(AddFavoriteApiService.class);
+        return AddFavoriteApi.getAddFavoriteApi(addFavoriteApiService);
     }
 }
