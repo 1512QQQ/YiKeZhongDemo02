@@ -66,6 +66,7 @@ public class MainActivity extends BaseActivity {
     private TextView settings;
     SimpleDraweeView touxiang;
     private SimpleDraweeView touxiang1;
+    private ImageView img02;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -123,6 +124,16 @@ public class MainActivity extends BaseActivity {
         night = findViewById(R.id.night);
         myDirectory = findViewById(R.id.my_directory);
         settings = findViewById(R.id.settings);
+        img02 = (ImageView) findViewById(R.id.img02);
+        img02.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ShowActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
 
 
         //new出SlidingMenu对象

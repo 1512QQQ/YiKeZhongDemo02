@@ -29,8 +29,7 @@ public class VideoActivity extends AppCompatActivity implements View.OnClickList
     private ImageView img02;
     private ImageView mImg01;
     private ImageView mImg02;
-    private int tag1;
-    private int tag2;
+
     private ImageView mImg03;
     private SimpleDraweeView mImg04;
     private ImageView mImg05;
@@ -39,6 +38,8 @@ public class VideoActivity extends AppCompatActivity implements View.OnClickList
      */
     private TextView mText2;
     private ImageView mImg;
+    private int one=1;
+    private int two=2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +62,7 @@ public class VideoActivity extends AppCompatActivity implements View.OnClickList
         mImg04.setImageURI(uri);
 
 
-        img01.setTag(1);
-        img02.setTag(1);
+
 
 
     }
@@ -95,31 +95,30 @@ public class VideoActivity extends AppCompatActivity implements View.OnClickList
             default:
                 break;
             case R.id.img01:
-                tag1 = (int) img01.getTag();
-                if (tag2 == 2) {
+                if (two == 1) {
                     return;
                 } else {
-                    if (tag1 == 1) {
+                    if (one == 1) {
                         img01.setBackgroundResource(R.drawable.t1);
-                        img01.setTag(2);
+                        one=2;
                     } else {
                         img01.setBackgroundResource(R.drawable.xin);
-                        img01.setTag(1);
+                        one=1;
+
                     }
                 }
                 break;
             case R.id.img02:
-                tag2 = (int) img02.getTag();
-                if (tag1 == 2) {
+                if (one == 2) {
                     return;
                 } else {
-                    if (tag2 == 1) {
+                    if (two == 2) {
                         img02.setBackgroundResource(R.drawable.t2);
-                        img02.setTag(2);
+                        two=1;
                     } else {
 
                         img02.setBackgroundResource(R.drawable.lie);
-                        img02.setTag(1);
+                        two=2;
                     }
                 }
                 break;
